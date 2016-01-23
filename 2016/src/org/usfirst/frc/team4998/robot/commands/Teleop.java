@@ -22,7 +22,7 @@ public class Teleop extends CommandBase {
     protected void execute() {
     	//chassis.drive(oi.getZ(), oi.getY());
     	shooter.shoot(oi.getX());
-    	
+    	shooter.lift(oi.getThrottle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
