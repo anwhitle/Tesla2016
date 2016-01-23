@@ -18,11 +18,11 @@ public class RobotMap {
 	public static int button0 = 0;
 	public static int button1 = 1;
 
-	public static int frontLeft = 0;
-	public static int frontRight = 1;
-	public static int rearLeft = 2;
-	public static int rearRight = 3;
+	public static int chassisLeft = 0;
+	public static int chassisRight = 1;
 	
-	public static int rightShooter = 1;
-	public static int leftShooter = 2;
+	public static int rightShooter = 2;
+	public static int leftShooter = 3;
+	
+	public static int Angle = 4;
 }

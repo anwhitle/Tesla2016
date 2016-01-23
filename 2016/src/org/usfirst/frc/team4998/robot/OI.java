@@ -55,5 +55,7 @@ public class OI {
 	public double getZ (){
 		return stick0.getTwist();
 	}
+	public double getThrottle(){
+		return stick0.getThrottle();
+	}
 }
-
