@@ -59,4 +59,3 @@ public class OI {
 		return stick0.getThrottle();
 	}
 }
-
