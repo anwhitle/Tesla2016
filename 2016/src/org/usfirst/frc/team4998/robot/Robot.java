@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4998.robot.commands.SimpleAuton;
 import org.usfirst.frc.team4998.robot.commands.Teleop;
 import org.usfirst.frc.team4998.robot.subsystems.Chassis;
+import edu.wpi.first.wpilibj.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,12 +23,18 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
     Command autonomousCommand;
+    CameraServer server;
+    
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+    	server = CameraServer.getInstance();
+        server.setQuality(50);
+        //the camera name (ex "cam0") can be found through the roborio web interface
+        server.startAutomaticCapture("cam0");
 		oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new Teleop();
