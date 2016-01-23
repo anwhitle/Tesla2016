@@ -7,7 +7,7 @@ import org.usfirst.frc.team4998.robot.OI;
  *
  */
 public class CommandBase extends CommandGroup {
-    //static Chassis chassis = new Chassis();
+    static Chassis chassis = new Chassis();
     static OI oi = new OI();
     static Shooter shooter = new Shooter();
     public  CommandBase() {
