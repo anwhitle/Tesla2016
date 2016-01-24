@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4998.robot.commands.SimpleAuton;
 import org.usfirst.frc.team4998.robot.commands.Teleop;
-import org.usfirst.frc.team4998.robot.subsystems.Chassis;
 import edu.wpi.first.wpilibj.CameraServer;
 
 /**
@@ -19,7 +18,7 @@ import edu.wpi.first.wpilibj.CameraServer;
  */
 public class Robot extends IterativeRobot {
 
-	public static final Chassis exampleSubsystem = new Chassis();
+	
 	public static OI oi;
 
     Command autonomousCommand;

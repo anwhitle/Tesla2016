@@ -17,12 +17,17 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 	public static int button0 = 0;
 	public static int button1 = 1;
+	
+	public static int joystickOnePort1 = 0;
+	public static int joystickTwoPort2 = 1;
 
-	public static int chassisLeft = 0;
-	public static int chassisRight = 1;
+	public static int chassisLeft = 1;
+	public static int chassisRight = 2;
 	
-	public static int rightShooter = 2;
-	public static int leftShooter = 3;
+	public static int rightShooter = 3;
+	public static int leftShooter = 4;
 	
-	public static int Angle = 4;
+	public static int Angle = 5;
+	
+	public static double deadZone = 0.15; 
 }

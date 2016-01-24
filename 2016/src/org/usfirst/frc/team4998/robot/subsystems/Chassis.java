@@ -14,18 +14,17 @@ public class Chassis extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	//frontLeft   = new VictorSP (RobotMap.frontLeft);
-        //frontRight  = new VictorSP (RobotMap.frontRight);
-        //rearLeft    = new VictorSP (RobotMap.rearLeft);
-        //rearRight   = new VictorSP (RobotMap.rearRight);
+    	left   = new VictorSP (RobotMap.chassisLeft);
+        right  = new VictorSP (RobotMap.chassisRight);
+        
     
     }
     
     public void drive(double z, double y){
-    	if(Math.abs(z) > 0.1){
+    	if(Math.abs(z) > RobotMap.deadZone){
         	left.set(z);
         	right.set(-z);
-    	} else if(Math.abs(y) > 0.1) {
+    	} else if(Math.abs(y) > RobotMap.deadZone) {
         	left.set(y);
         	right.set(y);
     	} else {
