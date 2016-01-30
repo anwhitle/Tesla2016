@@ -102,6 +102,12 @@ public class Robot extends IterativeRobot {
         dashData2 = SmartDashboard.getString("DB/String 2");
         dashData3 = SmartDashboard.getString("DB/String 3");
         dashData4 = SmartDashboard.getString("DB/String 4");
+        SmartDashboard.putString("txtbox 0", dashData);
+        SmartDashboard.putString("txtbox 1", dashData1);
+        SmartDashboard.putString("txtbox 2", dashData2);
+        SmartDashboard.putString("txtbox 3", dashData3);
+        SmartDashboard.putString("txtbox 4", dashData4);
+        
         
     }
 
