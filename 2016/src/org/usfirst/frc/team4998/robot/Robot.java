@@ -25,7 +25,9 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 
+    Command teleopCommand;
     Command autonomousCommand;
+    Command autonomousCommand2;
     SendableChooser autoChooser;
     CameraServer server;
     
@@ -42,12 +44,18 @@ public class Robot extends IterativeRobot {
         server.startAutomaticCapture("cam0");
 		oi = new OI();
         // instantiate the command used for the autonomous period
-        autonomousCommand = new Teleop();
+        teleopCommand = new Teleop();
+        autonomousCommand = new SimpleAuton();
+        autonomousCommand2 = new Auton2();
         
-        autoChooser = new SendableChooser();
-        autoChooser.addDefault("SimpleAuton",new SimpleAuton());
-        autoChooser.addObject("Auton2",new Auton2());
-        SmartDashboard.putData("Autonomous mode Chooser", autoChooser);
+        SmartDashboard.putData(Scheduler.getInstance());
+        SmartDashboard.putData("autonomous", autonomousCommand);
+        SmartDashboard.putData("autonomous2", autonomousCommand2);
+        //Allows to choose between auton modes
+        //autoChooser = new SendableChooser();
+       // autoChooser.addDefault("SimpleAuton",new SimpleAuton());
+        //autoChooser.addObject("Auton2",new Auton2());
+       // SmartDashboard.putData("Autonomous mode Chooser", autoChooser);
     }
 	
 	public void disabledPeriodic() {
@@ -57,10 +65,11 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
        // if (autonomousCommand != null) autonomousCommand.start();
-    	autonomousCommand = (Command) autoChooser.getSelected();
-    	autonomousCommand.start();
+    	teleopCommand = (Command) autoChooser.getSelected();
+    	teleopCommand.start();
     }
 
+    
     /**
      * This function is called periodically during autonomous
      */
@@ -73,7 +82,7 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        autonomousCommand.start();
+        teleopCommand.start();
     }
 
     /**
