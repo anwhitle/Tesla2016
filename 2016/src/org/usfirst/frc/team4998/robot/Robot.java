@@ -30,6 +30,7 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand2;
     SendableChooser autoChooser;
     CameraServer server;
+    boolean buttonValue;
     
 
     /**
@@ -48,9 +49,9 @@ public class Robot extends IterativeRobot {
         autonomousCommand = new SimpleAuton();
         autonomousCommand2 = new Auton2();
         
-        SmartDashboard.putData(Scheduler.getInstance());
-        SmartDashboard.putData("autonomous", autonomousCommand);
-        SmartDashboard.putData("autonomous2", autonomousCommand2);
+       // SmartDashboard.putData(Scheduler.getInstance());
+       // SmartDashboard.putData("autonomous", autonomousCommand);
+        //SmartDashboard.putData("autonomous2", autonomousCommand2);
         //Allows to choose between auton modes
         //autoChooser = new SendableChooser();
        // autoChooser.addDefault("SimpleAuton",new SimpleAuton());
@@ -65,8 +66,16 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
        // if (autonomousCommand != null) autonomousCommand.start();
-    	teleopCommand = (Command) autoChooser.getSelected();
-    	teleopCommand.start();
+    	//autonomousCommand = (Command) autoChooser.getSelected();
+    	 buttonValue = SmartDashboard.getBoolean("DB/Button 0");
+    	 if (buttonValue) {
+    		 SmartDashboard.putString("Auton", "SimpleAuton");
+    		 autonomousCommand.start();
+    	 } else {
+    		 autonomousCommand2.start();
+    		 SmartDashboard.putString("Auton", "Auton2");
+    	 }
+    	
     }
 
     
