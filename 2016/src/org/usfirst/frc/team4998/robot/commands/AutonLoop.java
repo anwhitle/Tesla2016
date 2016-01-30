@@ -25,42 +25,42 @@ public class AutonLoop extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	futureTime = stopwatch.get() +3;
-    	while(stopwatch.get() < futureTime){ //moving forward for 2 seconds
-    		chassis.drive(0, 0.8);
+    	futureTime = stopwatch.get() +3; //will move until the three seconds is up 
+    	while(stopwatch.get() < futureTime){ //moving forward for 3 seconds
+    		chassis.drive(0, 0.8); //drive
     	}
-    	while (chassis.getRange() <98){
-    	chassis.drive(0, 0.5);	
+    	while (chassis.getRange() <98){ //Sensor will detect things up to 98 inches 
+    	chassis.drive(0, 0.5); //drive	
     	}	
-    	while(chassis.getAngle() <90) {
+    	while(chassis.getAngle() <90) { //Robot will rotate until it reaches 90 degrees
     		//turning until the robot is 90 degrees
-    		chassis.drive(0, -0.5);
+    		chassis.drive(0, -0.5); //drive
     	}
-    	futureTime = stopwatch.get() +3;
-    	while(stopwatch.get() <futureTime){ //moving forward for 2 seconds
-    		chassis.drive(0, 0.8);
+    	futureTime = stopwatch.get() +3; //will move until the three seconds is up
+    	while(stopwatch.get() <futureTime){ //moving forward for 3 seconds
+    		chassis.drive(0, 0.8); //drive
     	}
-    	while (chassis.getRange() <98) {
-    		chassis.drive(0, 0.5);	
+    	while (chassis.getRange() <98) { //Sensor will detect things up to 98 inches
+    		chassis.drive(0, 0.5); //drive	
     	}
-    	while(chassis.getAngle() <90){
+    	while(chassis.getAngle() <90){ //Robot will rotate until it reaches 90 degrees
     		//turning until the robot is 90 degrees
-    		chassis.drive(0, -0.5);
+    		chassis.drive(0, -0.5); //drive
     	}
-    	futureTime = stopwatch.get() +3;
+    	futureTime = stopwatch.get() +3; //will move until the three seconds is up 
+    	while(stopwatch.get() < futureTime){ //moving forward for 3 seconds
+    		chassis.drive(0, 0.8); //drive
+    	}
+    	while (chassis.getRange() <98) { //Sensor will detect things up to 98 inches
+    		chassis.drive(0, 0.5); //drive	
+    	}
+    	while(chassis.getAngle() <90){ //Robot will rotate until it reaches 90 degrees
+    		//turning until the robot is 90 degrees
+    		chassis.drive(0, -0.5); //drive 
+    	}
+      	futureTime = stopwatch.get() +2; //will move until the two seconds is up 
     	while(stopwatch.get() < futureTime){ //moving forward for 2 seconds
-    		chassis.drive(0, 0.8);
-    	}
-    	while (chassis.getRange() <98) {
-    		chassis.drive(0, 0.5);	
-    	}
-    	while(chassis.getAngle() <9.0){
-    		//turning until the robot is 90 degrees
-    		chassis.drive(0, -0.5);
-    	}
-      	futureTime = stopwatch.get() +3;
-    	while(stopwatch.get() < futureTime){ //moving forward for 2 seconds
-    		chassis.drive(0, 0.8);
+    		chassis.drive(0, 0.8); //drive
     	}
     	
     }
