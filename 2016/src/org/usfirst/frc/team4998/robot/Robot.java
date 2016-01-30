@@ -31,6 +31,7 @@ public class Robot extends IterativeRobot {
     SendableChooser autoChooser;
     CameraServer server;
     boolean buttonValue;
+    String dashData, dashData1, dashData2, dashData3, dashData4;
     
 
     /**
@@ -67,6 +68,10 @@ public class Robot extends IterativeRobot {
         // schedule the autonomous command (example)
        // if (autonomousCommand != null) autonomousCommand.start();
     	//autonomousCommand = (Command) autoChooser.getSelected();
+    	
+    	
+    	
+    	//Uses button to change between autons
     	 buttonValue = SmartDashboard.getBoolean("DB/Button 0");
     	 if (buttonValue) {
     		 SmartDashboard.putString("Auton", "SimpleAuton");
@@ -92,6 +97,12 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         teleopCommand.start();
+        dashData = SmartDashboard.getString("DB/String 0");
+        dashData1 = SmartDashboard.getString("DB/String 1");
+        dashData2 = SmartDashboard.getString("DB/String 2");
+        dashData3 = SmartDashboard.getString("DB/String 3");
+        dashData4 = SmartDashboard.getString("DB/String 4");
+        
     }
 
     /**
