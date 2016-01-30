@@ -5,6 +5,10 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team4998.robot.commands.Auton2;
 import org.usfirst.frc.team4998.robot.commands.SimpleAuton;
 import org.usfirst.frc.team4998.robot.commands.Teleop;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -21,8 +25,12 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 
+    Command teleopCommand;
     Command autonomousCommand;
+    Command autonomousCommand2;
+    SendableChooser autoChooser;
     CameraServer server;
+    boolean buttonValue;
     
 
     /**
@@ -37,7 +45,18 @@ public class Robot extends IterativeRobot {
         server.startAutomaticCapture("cam0");
 		oi = new OI();
         // instantiate the command used for the autonomous period
-        autonomousCommand = new Teleop();
+        teleopCommand = new Teleop();
+        autonomousCommand = new SimpleAuton();
+        autonomousCommand2 = new Auton2();
+        
+       // SmartDashboard.putData(Scheduler.getInstance());
+       // SmartDashboard.putData("autonomous", autonomousCommand);
+        //SmartDashboard.putData("autonomous2", autonomousCommand2);
+        //Allows to choose between auton modes
+        //autoChooser = new SendableChooser();
+       // autoChooser.addDefault("SimpleAuton",new SimpleAuton());
+        //autoChooser.addObject("Auton2",new Auton2());
+       // SmartDashboard.putData("Autonomous mode Chooser", autoChooser);
     }
 	
 	public void disabledPeriodic() {
@@ -46,9 +65,20 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+       // if (autonomousCommand != null) autonomousCommand.start();
+    	//autonomousCommand = (Command) autoChooser.getSelected();
+    	 buttonValue = SmartDashboard.getBoolean("DB/Button 0");
+    	 if (buttonValue) {
+    		 SmartDashboard.putString("Auton", "SimpleAuton");
+    		 autonomousCommand.start();
+    	 } else {
+    		 autonomousCommand2.start();
+    		 SmartDashboard.putString("Auton", "Auton2");
+    	 }
+    	
     }
 
+    
     /**
      * This function is called periodically during autonomous
      */
@@ -61,7 +91,7 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        autonomousCommand.start();
+        teleopCommand.start();
     }
 
     /**
