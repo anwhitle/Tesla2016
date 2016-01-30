@@ -29,7 +29,8 @@ public class AutonLoop extends CommandBase {
     	while(stopwatch.get() < futureTime){ //moving forward for 2 seconds
     		chassis.drive(0, 0.8);
     	}
-    	while(chassis.get() <90) {
+    	while (chassis.getRange() <98)
+    	while(chassis.getAngle() <90) {
     		//turning until the robot is 90 degrees
     		chassis.drive(0, -0.5);
     	}
@@ -37,7 +38,8 @@ public class AutonLoop extends CommandBase {
     	while(stopwatch.get() <futureTime){ //moving forward for 2 seconds
     		chassis.drive(0, 0.8);
     	}
-    	while(chassis.get() <90){
+    	while (chassis.getRange() <98)
+    	while(chassis.getAngle() <90){
     		//turning until the robot is 90 degrees
     		chassis.drive(0, -0.5);
     	}
@@ -45,7 +47,8 @@ public class AutonLoop extends CommandBase {
     	while(stopwatch.get() < futureTime){ //moving forward for 2 seconds
     		chassis.drive(0, 0.8);
     	}
-    	while(chassis.get() <9.0){
+    	while (chassis.getRange() <98)
+    	while(chassis.getAngle() <9.0){
     		//turning until the robot is 90 degrees
     		chassis.drive(0, -0.5);
     	}
