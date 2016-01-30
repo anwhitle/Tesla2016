@@ -25,34 +25,40 @@ public class AutonLoop extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	futureTime = stopwatch.get() +2;
+    	futureTime = stopwatch.get() +3;
     	while(stopwatch.get() < futureTime){ //moving forward for 2 seconds
     		chassis.drive(0, 0.8);
     	}
-    	while (chassis.getRange() <98)
+    	while (chassis.getRange() <98){
+    	chassis.drive(0, 0.5);	
+    	}	
     	while(chassis.getAngle() <90) {
     		//turning until the robot is 90 degrees
     		chassis.drive(0, -0.5);
     	}
-    	futureTime = stopwatch.get() +2;
+    	futureTime = stopwatch.get() +3;
     	while(stopwatch.get() <futureTime){ //moving forward for 2 seconds
     		chassis.drive(0, 0.8);
     	}
-    	while (chassis.getRange() <98)
+    	while (chassis.getRange() <98) {
+    		chassis.drive(0, 0.5);	
+    	}
     	while(chassis.getAngle() <90){
     		//turning until the robot is 90 degrees
     		chassis.drive(0, -0.5);
     	}
-    	futureTime = stopwatch.get() +2;
+    	futureTime = stopwatch.get() +3;
     	while(stopwatch.get() < futureTime){ //moving forward for 2 seconds
     		chassis.drive(0, 0.8);
     	}
-    	while (chassis.getRange() <98)
+    	while (chassis.getRange() <98) {
+    		chassis.drive(0, 0.5);	
+    	}
     	while(chassis.getAngle() <9.0){
     		//turning until the robot is 90 degrees
     		chassis.drive(0, -0.5);
     	}
-      	futureTime = stopwatch.get() +2;
+      	futureTime = stopwatch.get() +3;
     	while(stopwatch.get() < futureTime){ //moving forward for 2 seconds
     		chassis.drive(0, 0.8);
     	}
