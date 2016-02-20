@@ -46,6 +46,14 @@ public class OI {
 	public JoystickButton Button5 = new JoystickButton(stick0,5);
 	public JoystickButton Button6 = new JoystickButton(stick0,6);
 	public JoystickButton Button7 = new JoystickButton(stick0,7);
+	public JoystickButton b1s1 = new JoystickButton(stick1,1);
+	public JoystickButton b2s1 = new JoystickButton(stick1,2);
+	public JoystickButton b3s1 = new JoystickButton(stick1,3);
+	public JoystickButton b4s1 = new JoystickButton(stick1,4);
+	public JoystickButton b5s1 = new JoystickButton(stick1,5);
+	public JoystickButton b6s1 = new JoystickButton(stick1,6);
+	public JoystickButton b7s1 = new JoystickButton(stick1,7);
+	
 	public double getY0 (){
 		return stick0.getY();
 	}
@@ -75,5 +83,8 @@ public class OI {
 	}
 	public double getPOV1() {
 		return stick1.getPOV(0);
+	}
+	public double getSlider1() {
+		return stick1.getDirectionDegrees();
 	}
 }

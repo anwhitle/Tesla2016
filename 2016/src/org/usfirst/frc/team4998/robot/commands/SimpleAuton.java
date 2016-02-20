@@ -25,10 +25,10 @@ public class SimpleAuton extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	while(stopwatch.get() < 2.0){
-    		//chassis.drive(0, 0.6);
+    		chassis.drive(0, 0.6); // Moves forward for two seconds
     	}
     	while(stopwatch.get() < 4.0){
-    		//chassis.drive(0, -0.6);
+    		chassis.drive(0, -0.6); // Moved backwards for two seconds 
     	}
     	
     }

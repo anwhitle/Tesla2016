@@ -25,35 +25,35 @@ public class Auton2 extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	while(stopwatch.get() < 2.0){
-    		chassis.drive(0.5, 0);
+    		chassis.drive(0.5, 0); //Drives forward for two seconds
     	}
     	
     	while(stopwatch.get() < 3.0){
-    		chassis.drive(0, 0.6);
+    		chassis.drive(0, 0.6); //Rotates for one second
     	}
     	
     	while(stopwatch.get() < 5.0){
-    		chassis.drive(0.5, 0);
+    		chassis.drive(0.5, 0); //Drives forward for two seocnds
     	}
     	
     	while(stopwatch.get() < 6.0){
-    		chassis.drive(0, 0.6);
+    		chassis.drive(0, 0.6); //Rotates for one second
     	}
     	
     	while(stopwatch.get() < 8.0){
-    		chassis.drive(0.5, 0);
+    		chassis.drive(0.5, 0); //Drives forward for two seconds
     	}
     	
     	while(stopwatch.get() < 9.0){
-    		chassis.drive(0, 0.6);
+    		chassis.drive(0, 0.6); //Rotates for one second
     	}
     	
     	while(stopwatch.get() < 11.0){
-    		chassis.drive(0.5, 0);
+    		chassis.drive(0.5, 0); //Drives for two seconds
     	}
     	
     	while(stopwatch.get() <12.0){
-    		chassis.drive(0, 0.6);
+    		chassis.drive(0, 0.6); //Rotates for one second 
     	}
     	
     }

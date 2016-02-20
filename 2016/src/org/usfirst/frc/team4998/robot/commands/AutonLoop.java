@@ -20,18 +20,18 @@ public class AutonLoop extends CommandBase {
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
+    protected void initialize() { 
     	stopwatch = new Timer();
     	stopwatch.start();
-    	textbox1 = Integer.parseInt(SmartDashboard.getString("DB/String 0"));
-    	textbox2 = Integer.parseInt(SmartDashboard.getString("DB/String 1"));
+    	textbox1 = Integer.parseInt(SmartDashboard.getString("DB/String 0")); // Grabs values from textbook on smartdash
+    	textbox2 = Integer.parseInt(SmartDashboard.getString("DB/String 1")); 
     	textbox3 = Integer.parseInt(SmartDashboard.getString("DB/String 2"));
     	textbox4 = Integer.parseInt(SmartDashboard.getString("DB/String 3"));
     	textbox5 = Integer.parseInt(SmartDashboard.getString("DB/String 4"));
-    	if (textbox1 == 1){
-    		travelTime = 1;
+    	if (textbox1 == 1){ //Figures out closest and simplest obstacle to go after 
+    		travelTime = 1; // Closest to lowbar
     	} else if (textbox2 == 1) {
-    		travelTime = 2;
+    		travelTime = 2; 
     	} else if (textbox3 ==1) {
     		travelTime = 3;
     	} else if (textbox4 ==1) {

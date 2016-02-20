@@ -40,15 +40,16 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-    	server = CameraServer.getInstance();
+    	server = CameraServer.getInstance();//start up camera server
         server.setQuality(50);
         //the camera name (ex "cam0") can be found through the roborio web interface
         server.startAutomaticCapture("cam0");
 		oi = new OI();
         // instantiate the command used for the autonomous period
         teleopCommand = new Teleop();
-        autonomousCommand = new SimpleAuton();
-        autonomousCommand2 = new Auton2();
+        autonomousCommand = new SimpleAuton(); //go forwards and go back
+        autonomousCommand2 = new Auton2(); // goes through two obstacles twice making two loops 
+        //Chooses obstacles based on information entered in on smart dashboard 
         
        // SmartDashboard.putData(Scheduler.getInstance());
        // SmartDashboard.putData("autonomous", autonomousCommand);
@@ -72,7 +73,7 @@ public class Robot extends IterativeRobot {
     	
     	
     	//Uses button to change between autons
-    	 buttonValue = SmartDashboard.getBoolean("DB/Button 0");
+    	 buttonValue = SmartDashboard.getBoolean("DB/Button 0"); //Chooses which auton to run
     	 if (buttonValue) {
     		 SmartDashboard.putString("Auton", "SimpleAuton");
     		 autonomousCommand.start();

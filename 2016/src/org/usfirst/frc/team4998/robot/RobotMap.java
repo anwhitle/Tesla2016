@@ -21,13 +21,28 @@ public class RobotMap {
 	public static int joystickOnePort1 = 0;
 	public static int joystickTwoPort2 = 1;
 
-	public static int chassisLeft = 1;
-	public static int chassisRight = 2;
+	public static int chassisLeftFront = 1;
+	public static int chassisLeftBack = 2;
+	public static int chassisRightFront = 3;
+	public static int chassisRightBack = 4;
 	
-	public static int rightShooter = 3;
-	public static int leftShooter = 4;
+	public static int rightShooter = 5;
+	public static int leftShooter = 6;
 	
-	public static int Angle = 5;
+	public static int lift1 = 7;
+	public static int lift2 = 8;
+	public static int kick = 9;
 	
 	public static double deadZone = 0.15; 
+	public static double kickerSpeedControl = 0.4;
+	
+	public static int ultrasonic1 = 1;
+	public static int ultrasonic2 = 2;
+	
+	public static double encoderMaxPeriod = 0.1;
+	public static int encoderMinRate = 10;
+	public static double encoderDistancePerPulse = 12.125;
+	public static boolean encoderReverseDirection = true; 
+	public static int encoderSamplesToAverage = 7;
+	
 }
