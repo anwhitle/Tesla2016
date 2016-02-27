@@ -1,18 +1,19 @@
 package org.usfirst.frc.team4998.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import org.usfirst.frc.team4998.robot.Robot;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Teleop extends CommandBase {
+public class Teleop extends Command {
 	public double steadyRate = 0;
 	public boolean toggle = false;
     public Teleop() {
         // Use requires() here to declare subsystem dependencies
-         requires(chassis);
-         requires(shooter);
+         requires(Robot.chassis);
+         requires(Robot.shooter);
     }
 
     // Called just before this Command runs the first time
@@ -21,15 +22,16 @@ public class Teleop extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	chassis.drive(oi.getZ0(), oi.getY0()); //Drives chassis based on y and z axis of joystick 1 
+    	Robot.chassis.drive(Robot.oi.getZ0(), Robot.oi.getY0()); //Drives chassis based on y and z axis of joystick 1 
     	
-    	/*
-    	oi.b5s1.whenPressed(new Shoot(0.5));
-    	oi.b3s1.whenPressed(new Shoot(0.75));
-    	oi.b4s1.whenPressed(new Shoot(0.85));
-    	oi.b6s1.whenPressed(new Shoot(1.0));
-    	oi.b1s1.whileHeld(new Suck());
-    	*/
+    	//New Code
+    	// /*
+    	Robot.oi.b5s1.whenPressed(new Shoot(0.5));
+    	Robot.oi.b3s1.whenPressed(new Shoot(0.75));
+    	Robot.oi.b4s1.whenPressed(new Shoot(0.85));
+    	Robot.oi.b6s1.whenPressed(new Shoot(1.0));
+    	Robot.oi.b1s1.whileHeld(new Suck());
+    	// */
     	
     	/*if (oi.b2s1.get()){
     		toggle = !toggle;
@@ -41,13 +43,13 @@ public class Teleop extends CommandBase {
     	}
     	else {
     	*/
-    		shooter.lift(oi.getY1());
+    	Robot.shooter.lift(Robot.oi.getY1());
     	//}
     	
     	smartDashboard(); // Outputs value to smart dashboard
     		
-    	 
-    	
+    	//old code
+    	 /*
     	if (oi.b3s1.get()) { // Shooter based on the four buttons, each has different speed, 3,4,5,6
     		shooter.shoot(-0.5);
     	} else if (oi.b4s1.get()) {
@@ -67,6 +69,8 @@ public class Teleop extends CommandBase {
     	}else {
     		shooter.kick(0);
     	}
+    	 */
+    	
     	
     	//if (oi.getPOV1() == 0){ //Lifts when user moved the pov up. (The little button like joystick on the joystick)
     		//Moves the position based on the throttle of the joystick 
@@ -99,18 +103,18 @@ public class Teleop extends CommandBase {
     protected void interrupted() {
     }
     public void smartDashboard (){
-    	SmartDashboard.putDouble("0xaxis", oi.getX0());
-    	SmartDashboard.putDouble("0yaxis", oi.getY0());
-    	SmartDashboard.putDouble("0zaxis", oi.getZ0());
-    	SmartDashboard.putDouble("0POVaxis", oi.getPOV0());
-    	SmartDashboard.putDouble("0Throttleaxis", oi.getThrottle0());
-    	SmartDashboard.putDouble("1xaxis", oi.getX1());
-    	SmartDashboard.putDouble("1yaxis", oi.getY1());
-    	SmartDashboard.putDouble("1zaxis", oi.getZ1());
-    	SmartDashboard.putDouble("1POVaxis", oi.getPOV1());
-    	SmartDashboard.putDouble("1Throttleaxis", oi.getThrottle1());
-    	SmartDashboard.putDouble("1Slider", oi.getSlider1());
-    	SmartDashboard.putDouble("Distance", shooter.getEncoderDistance());
-    	SmartDashboard.putDouble("Position", shooter.getEncPosition());
+    	SmartDashboard.putDouble("0xaxis", Robot.oi.getX0());
+    	SmartDashboard.putDouble("0yaxis", Robot.oi.getY0());
+    	SmartDashboard.putDouble("0zaxis", Robot.oi.getZ0());
+    	SmartDashboard.putDouble("0POVaxis", Robot.oi.getPOV0());
+    	SmartDashboard.putDouble("0Throttleaxis", Robot.oi.getThrottle0());
+    	SmartDashboard.putDouble("1xaxis", Robot.oi.getX1());
+    	SmartDashboard.putDouble("1yaxis", Robot.oi.getY1());
+    	SmartDashboard.putDouble("1zaxis", Robot.oi.getZ1());
+    	SmartDashboard.putDouble("1POVaxis", Robot.oi.getPOV1());
+    	SmartDashboard.putDouble("1Throttleaxis", Robot.oi.getThrottle1());
+    	SmartDashboard.putDouble("1Slider", Robot.oi.getSlider1());
+    	SmartDashboard.putDouble("Distance", Robot.shooter.getEncoderDistance());
+    	SmartDashboard.putDouble("Position", Robot.shooter.getEncPosition());
     }
 }
