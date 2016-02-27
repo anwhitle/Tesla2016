@@ -2,17 +2,20 @@
 package org.usfirst.frc.team4998.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import org.usfirst.frc.team4998.robot.RobotMap;
+
 /**
  *
  */
 public class Shooter extends Subsystem {
-    VictorSP right,left, lift1, lift2, kick; //Declare  victors
+    VictorSP right,left,kick; //Declare  victors
+    CANTalon lift1;//, lift2;
     Encoder encoder; //Declare encoder
-	
+    
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -21,8 +24,8 @@ public class Shooter extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     	right = new VictorSP(RobotMap.rightShooter); // Assign victors to ports based on robot map 
     	left = new VictorSP(RobotMap.leftShooter); 
-    	lift1 = new VictorSP (RobotMap.lift1);
-    	lift2 = new VictorSP (RobotMap.lift2);
+    	lift1 = new CANTalon (RobotMap.lift1);
+    	//lift2 = new CANTalon (RobotMap.lift2);
     	kick = new VictorSP (RobotMap.kick);
     	encoder = new Encoder(RobotMap.lift1, RobotMap.lift2, true, EncodingType.k4X); // Assigns encoder to ports based on robot map, ignore true and encoding 
     	encoder.setMaxPeriod(RobotMap.encoderMaxPeriod); //Sets value for encoders based on robot map
@@ -33,12 +36,12 @@ public class Shooter extends Subsystem {
     }
     public void lift(double speed){ //Lifts based on speed
     	if (Math.abs(speed) > RobotMap.deadZone) {
-    		lift1.set(speed);
-    		lift2.set(speed);
+    		lift1.set(speed * 0.7);
+    		//lift2.set(speed * 0.6);
     	}
     	else { //stops it 
     		lift1.set(0);
-    		lift2.set(0);
+    		//lift2.set(0);
     	}
    
    
@@ -91,5 +94,25 @@ public class Shooter extends Subsystem {
     	} 
     	lift(0); // Then stop it 
     }
+    
+    public double getEncoderDistance() {
+    	return lift1.getPosition();
+    }
+    public double getEncPosition() {
+    	return lift1.getEncPosition();
+    }
+    public double getD() {
+    	return lift1.getD();
+    }
+    public double getP() {
+    	return lift1.getP();
+    }
+    public double getI() {
+    	return lift1.getI();
+    }
+    
+    
+    
+    
 }
  

@@ -1,15 +1,14 @@
 package org.usfirst.frc.team4998.robot.commands;
 
-import org.usfirst.frc.team4998.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 /**
  *
  */
 public class Teleop extends CommandBase {
-
+	public double steadyRate = 0;
+	public boolean toggle = false;
     public Teleop() {
         // Use requires() here to declare subsystem dependencies
          requires(chassis);
@@ -23,29 +22,58 @@ public class Teleop extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	chassis.drive(oi.getZ0(), oi.getY0()); //Drives chassis based on y and z axis of joystick 1 
-    	if (oi.b1s1.get()) { // Shooter based on the four buttons, each has different speed, 1,2,3,4
-    		shooter.shoot(-0.4);
-    	} else if (oi.b2s1.get()) {
+    	
+    	/*
+    	oi.b5s1.whenPressed(new Shoot(0.5));
+    	oi.b3s1.whenPressed(new Shoot(0.75));
+    	oi.b4s1.whenPressed(new Shoot(0.85));
+    	oi.b6s1.whenPressed(new Shoot(1.0));
+    	oi.b1s1.whileHeld(new Suck());
+    	*/
+    	
+    	/*if (oi.b2s1.get()){
+    		toggle = !toggle;
+    		steadyRate = oi.getY1();
+    	}
+    	
+    	if (toggle){
+    		shooter.lift(steadyRate);
+    	}
+    	else {
+    	*/
+    		shooter.lift(oi.getY1());
+    	//}
+    	
+    	smartDashboard(); // Outputs value to smart dashboard
+    		
+    	 
+    	
+    	if (oi.b3s1.get()) { // Shooter based on the four buttons, each has different speed, 3,4,5,6
+    		shooter.shoot(-0.5);
+    	} else if (oi.b4s1.get()) {
     		shooter.shoot(0.75);
-    	} else if (oi.b3s1.get()) {
-    		shooter.shoot(.85);
-    	} else if (oi.b4s1.get()){
+    	} else if (oi.b5s1.get()) {
+    		shooter.shoot(1.0);
+    	} else if (oi.b6s1.get()){
     		shooter.shoot(.5);
     	} else {
     		shooter.shoot(0);
     	}
-    	if (oi.b5s1.get()){ //Kicks based on two different button, 5 an 6
+    	
+    	if (oi.b1s1.get()){ //Kicks based on two different button, 1 and 2
     		shooter.kick(0.8); 
-    	}else if (oi.b6s1.get()){
-    		shooter.kick(-0.8);
+    	}else if (oi.b2s1.get()){
+    		shooter.kick(-0.4);
     	}else {
     		shooter.kick(0);
     	}
-    	if (oi.getPOV1() == 0){ //Lifts when user moved the pov up. (The little button like joystick on the joystick)
+    	
+    	//if (oi.getPOV1() == 0){ //Lifts when user moved the pov up. (The little button like joystick on the joystick)
     		//Moves the position based on the throttle of the joystick 
-    		shooter.lifter(oi.getThrottle1());
-    	}
-    		
+    		//shooter.lifter(oi.getThrottle1());
+    	//}
+    
+    	
     	//if (oi.getPOV1() == 0){
     		//shooter.lift(1);
     	//} else if (oi.getPOV1() == 180){
@@ -54,8 +82,7 @@ public class Teleop extends CommandBase {
     //	} else {
     		//shooter.lift(0);
     	//}
-    	
-    	smartDashboard(); // Outputs value to smart dashboard
+   	
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -83,5 +110,7 @@ public class Teleop extends CommandBase {
     	SmartDashboard.putDouble("1POVaxis", oi.getPOV1());
     	SmartDashboard.putDouble("1Throttleaxis", oi.getThrottle1());
     	SmartDashboard.putDouble("1Slider", oi.getSlider1());
+    	SmartDashboard.putDouble("Distance", shooter.getEncoderDistance());
+    	SmartDashboard.putDouble("Position", shooter.getEncPosition());
     }
 }

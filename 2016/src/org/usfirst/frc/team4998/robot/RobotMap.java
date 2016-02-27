@@ -30,7 +30,7 @@ public class RobotMap {
 	public static int leftShooter = 6;
 	
 	public static int lift1 = 7;
-	public static int lift2 = 8;
+	public static int lift2 = 8;	//no longer used
 	public static int kick = 9;
 	
 	public static double deadZone = 0.15; 
@@ -40,9 +40,9 @@ public class RobotMap {
 	public static int ultrasonic2 = 2;
 	
 	public static double encoderMaxPeriod = 0.1;
-	public static int encoderMinRate = 10;
-	public static double encoderDistancePerPulse = 12.125;
+	public static int encoderMinRate = 1;
+	public static double encoderDistancePerPulse = 1;
 	public static boolean encoderReverseDirection = true; 
-	public static int encoderSamplesToAverage = 7;
+	public static int encoderSamplesToAverage = 1;
 	
 }

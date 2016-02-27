@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4998.robot.commands.Auton2;
 import org.usfirst.frc.team4998.robot.commands.SimpleAuton;
 import org.usfirst.frc.team4998.robot.commands.Teleop;
+import org.usfirst.frc.team4998.robot.subsystems.Chassis;
+import org.usfirst.frc.team4998.robot.subsystems.Shooter;
+
 import edu.wpi.first.wpilibj.CameraServer;
 
 /**
@@ -23,7 +26,9 @@ import edu.wpi.first.wpilibj.CameraServer;
 public class Robot extends IterativeRobot {
 
 	
-	public static OI oi;
+    public static Chassis chassis = new Chassis(); //This is purely used to initialize subsystems and OI 
+    public static OI oi = new OI();
+    public static Shooter shooter = new Shooter();
 
     Command teleopCommand;
     Command autonomousCommand;

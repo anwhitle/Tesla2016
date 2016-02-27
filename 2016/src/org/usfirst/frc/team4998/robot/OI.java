@@ -1,40 +1,14 @@
 package org.usfirst.frc.team4998.robot;
 
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team4998.robot.RobotMap;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    //// CREATING BUTTONS
-    // One type of button is a joystick button which is any button on a joystick.
-    // You create one by telling it which joystick it's on and which button
-    // number it is.
-    // Joystick stick = new Joystick(port);
-    // Button button = new JoystickButton(stick, buttonNumber);
-    
-    // There are a few additional built in buttons you can use. Additionally,
-    // by subclassing Button you can create custom triggers and bind those to
-    // commands the same as any other Button.
-    
-    //// TRIGGERING COMMANDS WITH BUTTONS
-    // Once you have a button, it's trivial to bind it to a button in one of
-    // three ways:
-    
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
-    
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-    
-    // Start the command when the button is released  and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
 	public static Joystick stick0 = new Joystick(RobotMap.joystickOnePort1);
 	public static Joystick stick1 = new Joystick(RobotMap.joystickTwoPort2);
 	
@@ -53,6 +27,22 @@ public class OI {
 	public JoystickButton b5s1 = new JoystickButton(stick1,5);
 	public JoystickButton b6s1 = new JoystickButton(stick1,6);
 	public JoystickButton b7s1 = new JoystickButton(stick1,7);
+	//pub
+	
+	
+	public JoystickButton xbox1a = new JoystickButton (stick0,0);
+	public JoystickButton xbox1b = new JoystickButton (stick0,1);
+	public JoystickButton xbox1x = new JoystickButton (stick0,2);
+	public JoystickButton xbox1y = new JoystickButton (stick0,3);
+	public JoystickButton xbox1leftbumper = new JoystickButton (stick0,4);
+	public JoystickButton xbox1rightbumper = new JoystickButton (stick0,5);
+	
+	public JoystickButton xbox2a = new JoystickButton (stick1,0);
+	public JoystickButton xbox2b = new JoystickButton (stick1,1);
+	public JoystickButton xbox2x = new JoystickButton (stick1,2);
+	public JoystickButton xbox2y = new JoystickButton (stick1,3);
+	public JoystickButton xbox2leftbumper = new JoystickButton (stick1,4);
+	public JoystickButton xbox2rightbumper = new JoystickButton (stick1,5);
 	
 	public double getY0 (){
 		return stick0.getY();
@@ -87,4 +77,82 @@ public class OI {
 	public double getSlider1() {
 		return stick1.getDirectionDegrees();
 	}
+	
+	public boolean getXbox1A(){
+		return stick0.getRawButton(0);
+	}
+	public boolean getXbox1B(){
+		return stick0.getRawButton(1);
+	}
+	public boolean getXbox1Y(){
+		return stick0.getRawButton(3);
+	}
+	public boolean getXbox1X(){
+		return stick0.getRawButton(2);
+	}
+	
+	public double getXboxRightSX(){
+		return stick0.getRawAxis(4);
+	}
+	public double getXboxRightSY(){
+		return stick0.getRawAxis(5);
+	}
+	
+	public double getXboxLeftSX(){
+		return stick0.getRawAxis(0);
+	}
+	public double getXboxLeftSY(){
+		return stick0.getRawAxis(1);
+	}
+	public double getXboxLeftT(){
+		return stick0.getRawAxis(2);
+	}
+	public double getXboxRightT(){
+		return stick0.getRawAxis(3);
+	}
+	public boolean getXbox1BumpL(){
+		return stick0.getRawButton(4);
+	}
+	public boolean getXbox1BumpR(){
+		return stick0.getRawButton(5);
+	}
+	public boolean getXbox2A(){
+		return stick1.getRawButton(0);
+	}
+	public boolean getXbox2B(){
+		return stick1.getRawButton(1);
+	}
+	public boolean getXbox2Y(){
+		return stick1.getRawButton(3);
+	}
+	public boolean getXbox2X(){
+		return stick1.getRawButton(2);
+	}
+	
+	public double getXbox2RightSX(){
+		return stick1.getRawAxis(4);
+	}
+	public double getXbox2RightSY(){
+		return stick1.getRawAxis(5);
+	}
+	
+	public double getXbox2LeftSX(){
+		return stick1.getRawAxis(0);
+	}
+	public double getXbox2LeftSY(){
+		return stick1.getRawAxis(1);
+	}
+	public double getXbox2LeftT(){
+		return stick1.getRawAxis(2);
+	}
+	public double getXbox2RightT(){
+		return stick1.getRawAxis(3);
+	}
+	public boolean getXbox2BumpL(){
+		return stick1.getRawButton(4);
+	}
+	public boolean getXbox2BumpR(){
+		return stick1.getRawButton(5);
+	}
+	
 }
