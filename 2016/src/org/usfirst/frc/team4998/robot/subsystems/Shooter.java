@@ -26,7 +26,7 @@ public class Shooter extends Subsystem {
     	left = new VictorSP(RobotMap.leftShooter); 
     	lift1 = new CANTalon (RobotMap.lift1);
     	//lift2 = new CANTalon (RobotMap.lift2);
-    	kick = new VictorSP (RobotMap.kick);
+    	kick = new VictorSP (RobotMap.lift1);
     	encoder = new Encoder(RobotMap.lift1, RobotMap.lift2, true, EncodingType.k4X); // Assigns encoder to ports based on robot map, ignore true and encoding 
     	encoder.setMaxPeriod(RobotMap.encoderMaxPeriod); //Sets value for encoders based on robot map
     	encoder.setMinRate(RobotMap.encoderMinRate);

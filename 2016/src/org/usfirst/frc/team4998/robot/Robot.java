@@ -8,8 +8,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team4998.robot.commands.Auton2;
+import org.usfirst.frc.team4998.robot.commands.SimpleAuton2;
 import org.usfirst.frc.team4998.robot.commands.SimpleAuton;
+import org.usfirst.frc.team4998.robot.commands.AntwanTeleop;
 import org.usfirst.frc.team4998.robot.commands.Teleop;
 import org.usfirst.frc.team4998.robot.subsystems.Chassis;
 import org.usfirst.frc.team4998.robot.subsystems.Shooter;
@@ -53,7 +54,8 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         teleopCommand = new Teleop();
         autonomousCommand = new SimpleAuton(); //go forwards and go back
-        autonomousCommand2 = new Auton2(); // goes through two obstacles twice making two loops 
+        autonomousCommand2 = new SimpleAuton();
+        // goes through two obstacles twice making two loops 
         //Chooses obstacles based on information entered in on smart dashboard 
         
        // SmartDashboard.putData(Scheduler.getInstance());
@@ -84,7 +86,7 @@ public class Robot extends IterativeRobot {
     		 autonomousCommand.start();
     	 } else {
     		 autonomousCommand2.start();
-    		 SmartDashboard.putString("Auton", "Auton2");
+    		 SmartDashboard.putString("Auton", "SimpleAuton2");
     	 }
     	
     }

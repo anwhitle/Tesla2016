@@ -18,6 +18,8 @@ public class Teleop extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	//DriveandLift driveandlift = new DriveandLift();
+    	//driveandlift.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -25,13 +27,13 @@ public class Teleop extends Command {
     	Robot.chassis.drive(Robot.oi.getZ0(), Robot.oi.getY0()); //Drives chassis based on y and z axis of joystick 1 
     	
     	//New Code
-    	// /*
+    	/*
     	Robot.oi.b5s1.whenPressed(new Shoot(0.5));
     	Robot.oi.b3s1.whenPressed(new Shoot(0.75));
     	Robot.oi.b4s1.whenPressed(new Shoot(0.85));
     	Robot.oi.b6s1.whenPressed(new Shoot(1.0));
     	Robot.oi.b1s1.whileHeld(new Suck());
-    	// */
+    	*/
     	
     	/*if (oi.b2s1.get()){
     		toggle = !toggle;
@@ -49,27 +51,27 @@ public class Teleop extends Command {
     	smartDashboard(); // Outputs value to smart dashboard
     		
     	//old code
-    	 /*
-    	if (oi.b3s1.get()) { // Shooter based on the four buttons, each has different speed, 3,4,5,6
-    		shooter.shoot(-0.5);
-    	} else if (oi.b4s1.get()) {
-    		shooter.shoot(0.75);
-    	} else if (oi.b5s1.get()) {
-    		shooter.shoot(1.0);
-    	} else if (oi.b6s1.get()){
-    		shooter.shoot(.5);
+    	 ///*
+    	if (Robot.oi.b3s1.get()) { // Shooter based on the four buttons, each has different speed, 3,4,5,6
+    		Robot.shooter.shoot(-0.5);
+    	} else if (Robot.oi.b4s1.get()) {
+    		Robot.shooter.shoot(0.75);
+    	} else if (Robot.oi.b5s1.get()) {
+    		Robot.shooter.shoot(1.0);
+    	} else if (Robot.oi.b6s1.get()){
+    		Robot.shooter.shoot(.5);
     	} else {
-    		shooter.shoot(0);
+    		Robot.shooter.shoot(0);
     	}
     	
-    	if (oi.b1s1.get()){ //Kicks based on two different button, 1 and 2
-    		shooter.kick(0.8); 
-    	}else if (oi.b2s1.get()){
-    		shooter.kick(-0.4);
+    	if (Robot.oi.b1s1.get()){ //Kicks based on two different button, 1 and 2
+    		Robot.shooter.kick(0.8); 
+    	}else if (Robot.oi.b2s1.get()){
+    		Robot.shooter.kick(-0.4);
     	}else {
-    		shooter.kick(0);
+    		Robot.shooter.kick(0);
     	}
-    	 */
+    	//*/
     	
     	
     	//if (oi.getPOV1() == 0){ //Lifts when user moved the pov up. (The little button like joystick on the joystick)

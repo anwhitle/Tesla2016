@@ -1,22 +1,17 @@
 package org.usfirst.frc.team4998.robot.commands;
 
-//import org.usfirst.frc.team4998.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team4998.robot.commands.Shoot;
-import org.usfirst.frc.team4998.robot.commands.Suck;
 import org.usfirst.frc.team4998.robot.Robot;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class SanaTeleop extends Command {
+public class AlexisJoeyTeleop extends Command {
 	public double steadyRate = 0;
 	public boolean toggle = false;
-	Command shoot;
-	
-    public SanaTeleop() {
+	Suck suck;
+    public AlexisJoeyTeleop() {
         // Use requires() here to declare subsystem dependencies
          requires(Robot.chassis);
          requires(Robot.shooter);
@@ -24,37 +19,84 @@ public class SanaTeleop extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	suck = new Suck ();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.chassis.drive(Robot.oi.getXboxLeftSX(), Robot.oi.getXboxRightSY());
+    	Robot.chassis.drive(Robot.oi.getZ0(), Robot.oi.getY0()); //Drives chassis based on y and z axis of joystick 1 
     	
-    	Robot.oi.xbox2leftbumper.whenPressed(new Shoot(0.5));
-    	Robot.oi.xbox2rightbumper.whenPressed(new Shoot(0.75));
-    	if(Robot.oi.getXbox2LeftT() > 0.5) {
-    		shoot = new Shoot(0.85);
-    		shoot.start();
-    	}
-    	if(Robot.oi.getXbox2RightT() > 0.5) {
-    		shoot = new Shoot(1.0);
-    		shoot.start();
-    	}
-
-    	Robot.oi.xbox2a.whileHeld(new Suck());
-    
-    	if (Robot.oi.xbox2x.get()){
-    		toggle = !toggle;
-    		steadyRate = Robot.oi.getXbox2LeftSY();
-    	}
-    	if (toggle){
-    		Robot.shooter.lift(steadyRate);
+    	//New Code
+    	///*
+    	Robot.oi.xbox2y.whenPressed(new Shoot(0.5));
+    	Robot.oi.xbox2b.whenPressed(new Shoot(0.75));
+    	Robot.oi.xbox2x.whenPressed(new Shoot(0.85));
+    	Robot.oi.xbox2a.whenPressed(new Shoot(1.0));
+    	if (Robot.oi.getXbox2RightT() > .25){
+    		suck = new Suck ();
+    		suck.start();
     	}
     	else {
-    		Robot.shooter.lift(Robot.oi.getXbox2LeftSY());
+    		if (!suck.done) {
+    			suck.cancel();
+    		}
     	}
     	
+    	//*/
+    	
+    	/*if (oi.b2s1.get()){
+    		toggle = !toggle;
+    		steadyRate = oi.getY1();
+    	}
+    	
+    	if (toggle){
+    		shooter.lift(steadyRate);
+    	}
+    	else {
+    	*/
+    	Robot.shooter.lift(Robot.oi.getXbox2LeftSY());
+    	//}
+    	
     	smartDashboard(); // Outputs value to smart dashboard
+    		
+    	//old code
+    	 /*
+    	if (Robot.oi.b3s1.get()) { // Shooter based on the four buttons, each has different speed, 3,4,5,6
+    		Robot.shooter.shoot(-0.5);
+    	} else if (Robot.oi.b4s1.get()) {
+    		Robot.shooter.shoot(0.75);
+    	} else if (Robot.oi.b5s1.get()) {
+    		Robot.shooter.shoot(1.0);
+    	} else if (Robot.oi.b6s1.get()){
+    		Robot.shooter.shoot(.5);
+    	} else {
+    		Robot.shooter.shoot(0);
+    	}
+    	
+    	if (Robot.oi.b1s1.get()){ //Kicks based on two different button, 1 and 2
+    		Robot.shooter.kick(0.8); 
+    	}else if (Robot.oi.b2s1.get()){
+    		Robot.shooter.kick(-0.4);
+    	}else {
+    		Robot.shooter.kick(0);
+    	}
+    	*/
+    	
+    	
+    	//if (oi.getPOV1() == 0){ //Lifts when user moved the pov up. (The little button like joystick on the joystick)
+    		//Moves the position based on the throttle of the joystick 
+    		//shooter.lifter(oi.getThrottle1());
+    	//}
+    
+    	
+    	//if (oi.getPOV1() == 0){
+    		//shooter.lift(1);
+    	//} else if (oi.getPOV1() == 180){
+    		//shooter.lift(-1);
+    		
+    //	} else {
+    		//shooter.lift(0);
+    	//}
    	
     }
 

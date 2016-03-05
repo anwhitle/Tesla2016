@@ -1,11 +1,11 @@
 package org.usfirst.frc.team4998.robot.commands;
 
-import org.usfirst.frc.team4998.robot.RobotMap;
+//import org.usfirst.frc.team4998.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team4998.robot.commands.Shoot;
-import org.usfirst.frc.team4998.robot.commands.Suck;
+//import org.usfirst.frc.team4998.robot.commands.Shoot;
+//import org.usfirst.frc.team4998.robot.commands.Suck;
 import org.usfirst.frc.team4998.robot.Robot;
 
 /**
@@ -34,19 +34,61 @@ public class AntwanTeleop extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	//DriveandLiftAntwan driveandlift = new DriveandLiftAntwan();
+    	//driveandlift.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
+    
     protected void execute() {
-    	Robot.chassis.drive(Robot.oi.getXboxLeftSX(), driveForward());
+    	Robot.shooter.lift(Robot.oi.getXbox2LeftSY());
     	
+    	Robot.chassis.drive(Robot.oi.getXboxLeftSX(), Robot.oi.getXboxRightSY());
+    	
+    	if (Robot.oi.xbox2a.get()) { // Shooter based on the four buttons, each has different speed, 3,4,5,6
+    		Robot.shooter.shoot(-0.5);
+    	} else if (Robot.oi.xbox2b.get()) {
+    		Robot.shooter.shoot(0.75);
+    	} else if (Robot.oi.xbox2y.get()) {
+    		Robot.shooter.shoot(1.0);
+    	} else if (Robot.oi.xbox2x.get()){
+    		Robot.shooter.shoot(.5);
+    	} else {
+    		Robot.shooter.shoot(0);
+    	}
+    	
+    	if (Robot.oi.xbox2rightbumper.get()){ //Kicks based on two different button, 1 and 2
+    		Robot.shooter.kick(0.8); 
+    	}else if (Robot.oi.xbox2leftbumper.get()){
+    		Robot.shooter.kick(-0.4);
+    	}else {
+    		Robot.shooter.kick(0);
+    	}
+
+    	/*Robot.oi.xbox2leftbumper.whenPressed(new Shoot(0.5));
+    	Robot.oi.xbox2rightbumper.whenPressed(new Shoot(0.75));
+    	if(Robot.oi.getXbox2LeftT() > 0.5) {
+    		shoot = new Shoot(0.85);
+    		shoot.start();
+    	}else{
+    		shoot.cancel();
+    	}
+    	if(Robot.oi.getXbox2RightT() > 0.5) {
+    		shoot = new Shoot(1.0);
+    		shoot.start();
+    	}else{
+    		shoot.cancel();
+    	}*/
+    	//Robot.chassis.drive(Robot.oi.getXboxLeftSX(), driveForward());
+    	/*
     	Robot.oi.xbox2a.whenPressed(new Shoot(0.5));
     	Robot.oi.xbox2b.whenPressed(new Shoot(0.75));
     	Robot.oi.xbox2x.whenPressed(new Shoot(0.85));
     	Robot.oi.xbox2y.whenPressed(new Shoot(1.0));
     	
     	Robot.oi.xbox2rightbumper.whileHeld(new Suck());
-    
+    	*/
+    /*
     	if (Robot.oi.xbox2x.get()){
     		toggle = !toggle;
     		steadyRate = Robot.oi.getXbox2LeftSY();
@@ -57,8 +99,9 @@ public class AntwanTeleop extends Command {
     	else {
     		Robot.shooter.lift(Robot.oi.getXbox2LeftSY());
     	}
-    	
-    	smartDashboard(); // Outputs value to smart dashboard
+    	*/
+
+    	//smartDashboard(); // Outputs value to smart dashboard
    	
     }
 

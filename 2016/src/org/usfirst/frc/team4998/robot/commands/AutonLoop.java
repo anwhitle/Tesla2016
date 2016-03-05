@@ -3,11 +3,12 @@ package org.usfirst.frc.team4998.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team4998.robot.Robot;
 
 /**
  *
  */
-public class AutonLoop extends CommandBase {
+public class AutonLoop extends Command {
 	Timer stopwatch;
 	Double futureTime;
 	int travelTime, textbox1, textbox2, textbox3, textbox4, textbox5;
@@ -15,7 +16,7 @@ public class AutonLoop extends CommandBase {
     public void SimpleAuton() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(chassis);
+    	requires(Robot.chassis);
    
     }
 
@@ -43,40 +44,40 @@ public class AutonLoop extends CommandBase {
     protected void execute() {
     	futureTime = stopwatch.get() +travelTime; //will move until the three seconds is up 
     	while(stopwatch.get() < futureTime){ //moving forward according to travel time
-    		chassis.drive(0, 0.8); //drive
+    		Robot.chassis.drive(0, 0.8); //drive
     	}
-    	while (chassis.getRange() <98){ //Sensor will detect things up to 98 inches 
-    	chassis.drive(0, 0.5); //drive	
+    	while (Robot.chassis.getRange() <98){ //Sensor will detect things up to 98 inches 
+    		Robot.chassis.drive(0, 0.5); //drive	
     	}	
-    	while(chassis.getAngle() <90) { //Robot will rotate until it reaches 90 degrees
+    	while(Robot.chassis.getAngle() <90) { //Robot will rotate until it reaches 90 degrees
     		//turning until the robot is 90 degrees
-    		chassis.drive(0, -0.5); //drive
+    		Robot.chassis.drive(0, -0.5); //drive
     	}
     	futureTime = stopwatch.get() +travelTime; //will move until the three seconds is up
     	while(stopwatch.get() <futureTime){ //moving forward according to travel time
-    		chassis.drive(0, 0.8); //drive
+    		Robot.chassis.drive(0, 0.8); //drive
     	}
-    	while (chassis.getRange() <98) { //Sensor will detect things up to 98 inches
-    		chassis.drive(0, 0.5); //drive	
+    	while (Robot.chassis.getRange() <98) { //Sensor will detect things up to 98 inches
+    		Robot.chassis.drive(0, 0.5); //drive	
     	}
-    	while(chassis.getAngle() <90){ //Robot will rotate until it reaches 90 degrees
+    	while(Robot.chassis.getAngle() <90){ //Robot will rotate until it reaches 90 degrees
     		//turning until the robot is 90 degrees
-    		chassis.drive(0, -0.5); //drive
+    		Robot.chassis.drive(0, -0.5); //drive
     	}
     	futureTime = stopwatch.get() +travelTime; //will move until the three seconds is up 
     	while(stopwatch.get() < futureTime){ //moving forward according to travel time
-    		chassis.drive(0, 0.8); //drive
+    		Robot.chassis.drive(0, 0.8); //drive
     	}
-    	while (chassis.getRange() <98) { //Sensor will detect things up to 98 inches
-    		chassis.drive(0, 0.5); //drive	
+    	while (Robot.chassis.getRange() <98) { //Sensor will detect things up to 98 inches
+    		Robot.chassis.drive(0, 0.5); //drive	
     	}
-    	while(chassis.getAngle() <90){ //Robot will rotate until it reaches 90 degrees
+    	while(Robot.chassis.getAngle() <90){ //Robot will rotate until it reaches 90 degrees
     		//turning until the robot is 90 degrees
-    		chassis.drive(0, -0.5); //drive 
+    		Robot.chassis.drive(0, -0.5); //drive 
     	}
       	futureTime = stopwatch.get() +travelTime; //will move until the two seconds is up 
     	while(stopwatch.get() < futureTime){ //moving forward according to travel time
-    		chassis.drive(0, 0.8); //drive
+    		Robot.chassis.drive(0, 0.8); //drive
     	}
     	
     }

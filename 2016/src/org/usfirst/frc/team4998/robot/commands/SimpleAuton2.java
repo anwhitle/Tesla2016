@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.Timer;
 /**
  *
  */
-public class SimpleAuton extends Command {
+public class SimpleAuton2 extends Command {
 	Timer stopwatch;
-    public SimpleAuton() {
+    public SimpleAuton2() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassis);
@@ -20,13 +20,19 @@ public class SimpleAuton extends Command {
     protected void initialize() {
     	stopwatch = new Timer();
     	stopwatch.start();
+    	stopwatch.reset();
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	while(stopwatch.get() < 6.0){
+    	if(stopwatch.get() < 5.0){
     		Robot.chassis.drive(0, -1); // Moves forward for two seconds
+    	} else if (stopwatch.get() < 10 ){
+    		Robot.chassis.drive(0, 1);
+    	}
+    	  else if(stopwatch.get() > 10.0){
+    		Robot.chassis.drive(0, 0.0); // Moved
     	}
     	//while(stopwatch.get() < 6.0){
     		//Robot.chassis.drive(0, 0.8); // Moved backwards for two seconds 
@@ -34,9 +40,6 @@ public class SimpleAuton extends Command {
     	//while(stopwatch.get() < 9.0){
     		//Robot.chassis.drive(0, -0.8); // Moved backwards for two seconds 
     	//}
-    	if(stopwatch.get() > 6.0){
-    		Robot.chassis.drive(0, 0.0); // Moved
-    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

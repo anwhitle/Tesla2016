@@ -3,16 +3,16 @@ package org.usfirst.frc.team4998.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import edu.wpi.first.wpilibj.Timer;
-
+import org.usfirst.frc.team4998.robot.Robot;
 /**
  *
  */
-public class Auton2 extends CommandBase {
+public class Auton2 extends Command {
 	Timer stopwatch;
     public Auton2() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(chassis);
+        // eg. requires(Robot.chassis);
+    	requires(Robot.chassis);
     }
 
     // Called just before this Command runs the first time
@@ -25,35 +25,35 @@ public class Auton2 extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	while(stopwatch.get() < 2.0){
-    		chassis.drive(0.5, 0); //Drives forward for two seconds
+    		Robot.chassis.drive(0.5, 0); //Drives forward for two seconds
     	}
     	
     	while(stopwatch.get() < 3.0){
-    		chassis.drive(0, 0.6); //Rotates for one second
+    		Robot.chassis.drive(0, 0.6); //Rotates for one second
     	}
     	
     	while(stopwatch.get() < 5.0){
-    		chassis.drive(0.5, 0); //Drives forward for two seocnds
+    		Robot.chassis.drive(0.5, 0); //Drives forward for two seocnds
     	}
     	
     	while(stopwatch.get() < 6.0){
-    		chassis.drive(0, 0.6); //Rotates for one second
+    		Robot.chassis.drive(0, 0.6); //Rotates for one second
     	}
     	
     	while(stopwatch.get() < 8.0){
-    		chassis.drive(0.5, 0); //Drives forward for two seconds
+    		Robot.chassis.drive(0.5, 0); //Drives forward for two seconds
     	}
     	
     	while(stopwatch.get() < 9.0){
-    		chassis.drive(0, 0.6); //Rotates for one second
+    		Robot.chassis.drive(0, 0.6); //Rotates for one second
     	}
     	
     	while(stopwatch.get() < 11.0){
-    		chassis.drive(0.5, 0); //Drives for two seconds
+    		Robot.chassis.drive(0.5, 0); //Drives for two seconds
     	}
     	
     	while(stopwatch.get() <12.0){
-    		chassis.drive(0, 0.6); //Rotates for one second 
+    		Robot.chassis.drive(0, 0.6); //Rotates for one second 
     	}
     	
     }
